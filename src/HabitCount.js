@@ -1,4 +1,5 @@
-import { PropTypes } from 'react'
+import React, { Component } from 'react'
+import PropTypes from 'prop-types'
 
 const percentToDecimal = (decimal) => {
   return (( decimal * 100 ) + '%' )
@@ -7,7 +8,7 @@ const calcGoalProgress = (total, goal) => {
   return percentToDecimal( total / goal )
 }
 
-export const HabitCount = ({total=0,
+const HabitCount = ({total=0,
                             exercise=0,
                             korean=0,
                             programming=0,
@@ -37,6 +38,8 @@ export const HabitCount = ({total=0,
     </div>
   </div>
 )
+
+export default HabitCount
 
 HabitCount.propTypes = {
   total: PropTypes.number,
