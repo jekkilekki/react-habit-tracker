@@ -1,44 +1,47 @@
-import React, { Component } from 'react'
+import { PropTypes } from 'react'
 
-class HabitCount extends Component {
-  percentToDecimal( decimal ) {
-    return (( decimal * 100 ) + '%' )
-  }
-  calcGoalProgress( total, goal ) {
-    return this.percentToDecimal( total / goal )
-  }
-
-  render() {
-    return (
-      <div className="habit-counter">
-        <div className="habit-streak">
-          <span>{this.props.total}</span>
-          <span>days</span>
-        </div>
-        <div className="habit-exercise">
-          <span>{this.props.exercise}</span>
-          <span>days</span>
-        </div>
-        <div className="habit-korean">
-          <span>{this.props.korean}</span>
-          <span>day</span>
-        </div>
-        <div className="habit-programming">
-          <span>{this.props.programming}</span>
-          <span>days</span>
-        </div>
-        <div className="habit-goal">
-          <span>
-            {this.calcGoalProgress(
-              this.props.total,
-              this.props.goal
-            )}
-          </span>
-          <span>completed</span>
-        </div>
-      </div>
-    )
-  }
+const percentToDecimal = (decimal) => {
+  return (( decimal * 100 ) + '%' )
+}
+const calcGoalProgress = (total, goal) => {
+  return percentToDecimal( total / goal )
 }
 
-export default HabitCount
+export const HabitCount = ({total=0,
+                            exercise=0,
+                            korean=0,
+                            programming=0,
+                            goal=0}) => (
+  <div className="habit-counter">
+    <div className="habit-streak">
+      <span>{total}</span>
+      <span>days</span>
+    </div>
+    <div className="habit-exercise">
+      <span>{exercise}</span>
+      <span>days</span>
+    </div>
+    <div className="habit-korean">
+      <span>{korean}</span>
+      <span>day</span>
+    </div>
+    <div className="habit-programming">
+      <span>{programming}</span>
+      <span>days</span>
+    </div>
+    <div className="habit-goal">
+      <span>
+        {calcGoalProgress(total, goal)}
+      </span>
+      <span>completed</span>
+    </div>
+  </div>
+)
+
+HabitCount.propTypes = {
+  total: PropTypes.number,
+  exercise: PropTypes.number,
+  korean: PropTypes.number,
+  programming: PropTypes.number,
+  goal: PropTypes.goal
+}
