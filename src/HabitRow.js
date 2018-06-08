@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { PropTypes } from 'react'
 import Terrain from 'react-icons/lib/md/terrain'
 import SnowFlake from 'react-icons/lib/ti/weather-snow'
 import Calendar from 'react-icons/lib/fa/calendar'
@@ -12,3 +12,11 @@ export const HabitRow = ({location, date, exercise, korean, programming}) => (
     <td>{(programming) ? <SnowFlake /> : null}</td>
   </tr>
 )
+
+HabitRow.propTypes = {
+  location: PropTypes.string.isRequired,
+  date: PropTypes.instanceOf(Date).isRequired,
+  exercise: PropTypes.bool,
+  korean: PropTypes.bool,
+  programming: PropTypes.bool
+}
